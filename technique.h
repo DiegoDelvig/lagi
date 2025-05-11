@@ -1,5 +1,5 @@
-#ifndef COMBATTANTS_H
-#define COMBATTANTS_H
+#ifndef TECHNIQUE_H
+#define TECHNIQUE_H
 
 typedef struct {
     char nom[20];
@@ -11,6 +11,10 @@ typedef struct {
     int duree;         
     int tempsRecharge; 
     int attenteTech;   
-} TechniqueSpeciale;  
+} Technique;  
+
+void coupEpeePuissant();
+void afficherTechnique(Technique technique);
+Technique* chargerTechniques(char *fileName, int nbTechniques);
 
 #endif

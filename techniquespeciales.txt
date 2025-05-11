@@ -1,49 +1,49 @@
-Nom: Coup Epée Puissant
-Description: "Inflige 40 dégâts et augmente l’attaque de 30 pendant 2 tours."
-VieEffet: 40
-AugmenteAttaque: 30
-AugmenteDefense: 0
-AugmenteAgilite: 0
-Duree: 2
-TempsRecharge: 3
-TourRestant: 0
+CoupEpéePuissant
+Inflige40DégâtsEtAugmenteL’attaqueDe30Pendant2Tours.
+40
+30
+0
+0
+2
+3
+0
 
-Nom: Bouclier Sacré
-Description : "Augmente la défense de 30 pendant 2 tours. Recharge en 4 tours."
-VieEffet: 0
-AugmenteAttaque: 0
-AugmenteDefense: 30
-AugmenteAgilite: 0
-Duree: 2
-TempsRecharge: 4
-TourRestant: 0
+BouclierSacré
+AugmenteLaDéfenseDe30Pendant2Tours.RechargeEn4Tours."
+0
+0
+30
+0
+2
+4
+0
 
-Nom: Soin Curatif
-Description : "Rend 30 points de vie sur 2 tours. Idéal pour survivre"
-VieEffet: -30
-AugmenteAttaque: 0
-AugmenteDefense: 0
-AugmenteAgilite: 0
-Duree: 2
-TempsRecharge: 4
-TourRestant: 0
+SoinCuratif
+Rend30PointsDeVieSur2Tours.IdéalPourSurvivre
+-30
+0
+0
+0
+2
+4
+0
     
-Nom: Disparition
-Description : "Augmente l’agilité de 30, rendant l’esquive plus probable pendant 2 tours."
-VieEffet: 0
-AugmenteAttaque: 0
-AugmenteDefense: 0
-AugmenteAgilite: 30
-Duree: 2
-TempsRecharge: 4
-TourRestant: 0
+Disparition
+AugmenteL’agilitéDe30,RendantL’esquivePlusProbablePendant2Tours.
+0
+0
+0
+30
+2
+4
+0
     
-Nom: Rugissement Sauvage
-Description : "Inflige 30 dégâts sans contact direct."
-VieEffet: 30
-AugmenteAttaque: 0
-AugmenteDefense: 0
-AugmenteAgilite: 0
-Duree: 2
-TempsRecharge: 4
-TourRestant: 0
+RugissementSauvage
+Inflige30DégâtsSansContactDirect.
+30
+0
+0
+0
+2
+4
+0

@@ -3,14 +3,24 @@
 #include <string.h>
 
 #include "combattants.h"
+#include "technique.h"
 
 #define MAX_NOM 50
-
+#define NB_TECHNIQUES 5
 
 void attaqueNormale(Combattant attaquant, Combattant *pcible) {
 
-    (*pcible).pointvie -= attaquant.attaque * ((*pcible).defense/100.0);
-    printf("%s attaque %s et inflige %d dégâts !\n", attaquant.nom, (*pcible).nom, attaquant.attaque);
+    int degats = attaquant.attaque * (1 - (*pcible).defense/100.0);
+
+    if ((*pcible).agilite > rand() % 100) {
+        // L'attaque est esquivée
+        printf("%s a esquivé l'attaque de %s !\n", (*pcible).nom, attaquant.nom);
+        degats = 0;
+    }
+
+    (*pcible).pointvie -= degats;
+    
+    printf("%s attaque %s et inflige %d dégâts !\n", attaquant.nom, (*pcible).nom, degats);
     printf("%s a maintenant %d points de vie.\n", (*pcible).nom, (*pcible).pointvie);
 }
 
@@ -35,19 +45,58 @@ void gererCombatParEquipe(Combattant *equipeAttaque, char *nomEquipeAttaque, Com
             // Logique de l'attaque normale ici
             int numCible;
 
-            /*
+            
             printf("EQUIPE %s :\n", nomEquipeCible);
             for (int j = 0; j < nbCombattantsEquipe; j++) {
                 printf("%d: %s\n",j+1, equipeCible[j].nom);
             }
-            */
+            
             printf("Choisissez le combattant de l'équipe 2 à attaquer (1 à %d) : ", nbCombattantsEquipe);
             scanf("%d", &numCible);
             attaqueNormale(equipeAttaque[i], &equipeCible[numCible - 1]);
             afficherCombattant(equipeCible[numCible - 1]);
+
         } else if (choixAttaque == 2) {
             printf("Vous avez choisi la technique spéciale ! \n");
             // Logique de la technique spéciale ici
+            Technique *techniques = chargerTechniques("techniquespeciales.txt", NB_TECHNIQUES);
+
+            for (int j = 0; j < NB_TECHNIQUES; j++) {
+                printf("%d. \n", j + 1);
+                afficherTechnique(techniques[j]);
+            }
+
+            int choixTechnique;
+            do {
+                printf("Choix de la technique spéciale (1 à %d) : ", NB_TECHNIQUES);
+                scanf("%d", &choixTechnique);
+            } while (choixTechnique < 1 || choixTechnique > NB_TECHNIQUES);
+
+            switch(choixTechnique) {
+                case 1:
+                    // Appliquer la technique spéciale 1
+                    printf("Vous avez utilisé la technique :  %s!\n", techniques[0].nom);
+                    coupEpeePuissant();
+                    break;
+                case 2:
+                    // Appliquer la technique spéciale 2
+                    printf("Vous avez utilisé la technique :  %s!\n", techniques[1].nom);
+                    break;
+                case 3:
+                    // Appliquer la technique spéciale 3
+                    printf("Vous avez utilisé la technique :  %s!\n", techniques[2].nom);
+                    break;
+                case 4:
+                    // Appliquer la technique spéciale 4
+                    printf("Vous avez utilisé la technique :  %s!\n", techniques[3].nom);
+                    break;
+                case 5:
+                    // Appliquer la technique spéciale 5
+                    printf("Vous avez utilisé la technique :  %s!\n", techniques[4].nom);
+                    break;
+            }
+
+            
         } else {
             printf("Choix invalide, essayez à nouveau.\n");
             i--; // Répéter le tour

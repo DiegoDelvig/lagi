@@ -154,6 +154,7 @@ int main() {
         } else {
             printf("\n\033[1;33mC'est au tour de l'IA...\n\033[0m");
         }
+        round++;
     }
     // Libérer la mémoire
     free(equipe1);
