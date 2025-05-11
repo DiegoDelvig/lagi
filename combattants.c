@@ -6,6 +6,31 @@
 
 #define MAX_NOM 50
 
+
+void attaqueNormale(Combattant attaquant, Combattant *pcible) {
+
+    (*pcible).pointvie -= attaquant.attaque;
+    printf("%s attaque %s et inflige %d dégâts !\n", attaquant.nom, (*pcible).nom, attaquant.attaque);
+    printf("%s a maintenant %d points de vie.\n", (*pcible).nom, (*pcible).pointvie);
+}
+
+Combattant* choisirEquipe(Combattant* combattants, int nbCombattants, Combattant *equipe, int nbCombattantsEquipe) {
+    for (int i = 0; i < nbCombattantsEquipe; i++) {
+        printf("Choisissez le combattant %d : ", i + 1);
+        int choixCombattant;
+        scanf("%d", &choixCombattant);
+        if (choixCombattant < 0 || choixCombattant >= nbCombattants) {
+            printf("Choix invalide, essayez à nouveau.\n");
+            i--; // Répéter le choix
+        } else {
+            equipe[i] = combattants[choixCombattant - 1];
+            printf("Vous avez choisi le combattant %s\n", combattants[choixCombattant - 1].nom);
+        }
+    }
+
+    return equipe;
+}
+
 void afficherCombattant(Combattant combattant) {
     printf("Nom: %s\n", combattant.nom);
     printf("Emoji: %s\n", combattant.emoji);

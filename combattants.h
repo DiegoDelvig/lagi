@@ -22,7 +22,8 @@ typedef struct {
     int equipe; // 1 (joueur) ou 2 (IA)
 }Combattant;
 
-
+void attaqueNormale(Combattant attaquant, Combattant *pcible);
+Combattant* choisirEquipe(Combattant* combattants, int nbCombattants, Combattant *equipe, int nbCombattantsEquipe);
 void afficherCombattant(Combattant combattant);
 Combattant* chargerCombattants(char *fileName, int nbCombattantsEquipe);
 
