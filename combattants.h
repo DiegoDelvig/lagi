@@ -23,6 +23,7 @@ typedef struct {
 }Combattant;
 
 void attaqueNormale(Combattant attaquant, Combattant *pcible);
+void gererCombatParEquipe(Combattant *equipeAttaque, char *nomEquipeAttaque, Combattant *equipeCible, char *nomEquipeCible, int nbCombattantsEquipe);
 Combattant* choisirEquipe(Combattant* combattants, int nbCombattants, Combattant *equipe, int nbCombattantsEquipe);
 void afficherCombattant(Combattant combattant);
 Combattant* chargerCombattants(char *fileName, int nbCombattantsEquipe);

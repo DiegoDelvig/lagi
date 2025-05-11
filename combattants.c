@@ -9,9 +9,51 @@
 
 void attaqueNormale(Combattant attaquant, Combattant *pcible) {
 
-    (*pcible).pointvie -= attaquant.attaque;
+    (*pcible).pointvie -= attaquant.attaque * ((*pcible).defense/100.0);
     printf("%s attaque %s et inflige %d dégâts !\n", attaquant.nom, (*pcible).nom, attaquant.attaque);
     printf("%s a maintenant %d points de vie.\n", (*pcible).nom, (*pcible).pointvie);
+}
+
+void gererCombatParEquipe(Combattant *equipeAttaque, char *nomEquipeAttaque, Combattant *equipeCible, char *nomEquipeCible, int nbCombattantsEquipe) {
+    printf("\n\033[1;33mC'est au tour de l'équipe %s...\n\033[0m", nomEquipeAttaque);
+
+    for (int i = 0; i < nbCombattantsEquipe; i++) {
+        printf("%s de l'équipe %s : \n", equipeAttaque[i].nom, nomEquipeAttaque);
+
+        printf("Quel attaque voulez-vous faire ?\n");
+        printf("1. Attaque normale\n");
+        printf("2. Technique spéciale\n");
+
+        int choixAttaque;
+        do {
+            printf("Choix d'attaque (1 ou 2) : ");
+            scanf("%d", &choixAttaque);
+        } while (choixAttaque != 1 && choixAttaque != 2);
+
+        if (choixAttaque == 1) {
+            printf("Vous avez choisi l'attaque normale ! \n");
+            // Logique de l'attaque normale ici
+            int numCible;
+
+            /*
+            printf("EQUIPE %s :\n", nomEquipeCible);
+            for (int j = 0; j < nbCombattantsEquipe; j++) {
+                printf("%d: %s\n",j+1, equipeCible[j].nom);
+            }
+            */
+            printf("Choisissez le combattant de l'équipe 2 à attaquer (1 à %d) : ", nbCombattantsEquipe);
+            scanf("%d", &numCible);
+            attaqueNormale(equipeAttaque[i], &equipeCible[numCible - 1]);
+            afficherCombattant(equipeCible[numCible - 1]);
+        } else if (choixAttaque == 2) {
+            printf("Vous avez choisi la technique spéciale ! \n");
+            // Logique de la technique spéciale ici
+        } else {
+            printf("Choix invalide, essayez à nouveau.\n");
+            i--; // Répéter le tour
+        }
+    }
+
 }
 
 Combattant* choisirEquipe(Combattant* combattants, int nbCombattants, Combattant *equipe, int nbCombattantsEquipe) {
